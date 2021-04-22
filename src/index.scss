@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap');
+body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    .container {
+        height: 100vh;
+        width: 100%;
+        background-color: #F7F6E7;
+    }
+        .header {
+          width: 100%;
+          .nav-container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #31326F;
+            
+            
+            
+            .navbar {
+              width: 40%;
+              display: flex;
+              list-style-type: none;
+              align-items: center;
+              justify-content: space-evenly;
+
+              .check {
+                width: 25px;
+                height: 25px;
+                display: none;
+                
+                .fa {
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+              .nav-el {
+                padding: 5px 10px;
+                border-radius: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .nav-btn{
+                  text-decoration: none;
+                  color: white;
+                  height: 100%;
+                  font-weight: bold;
+                }
+                
+              }
+              .log{
+                background-color: #FFC93C;
+              }
+            }
+          }
+        }
+      }
+    .sign {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      .form-container {
+        border: 10px solid red;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+      }
+    }
+
+    .signup-container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+
+      .left-contain {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #2193BC;
+        color: #F7F6E7;
+
+        .logo-contain {
+          width: 100%;
+          .lg {
+            margin-left: 20px;
+            width: 200px;
+            height: 70px;
+          }
+        }
+        .card-txt{
+          text-align: center;
+          h1 {
+            font-weight: bold;
+            font-size: 2.5rem;
+          }
+          p {
+            line-height: 2rem;
+            margin-bottom: 35px;
+          }
+          
+          button {
+            border-radius: 20px;
+            border: 1px solid #2193BC;
+            background-color: #fff;
+            
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+            a {
+              text-decoration: none;
+              color: #2193BC;
+              .fasign {
+                margin-left: 5px;
+              }
+            }
+            
+          }
+          
+          button:active {
+            transform: scale(0.95);
+          }
+          
+          button:focus {
+            outline: none;
+            cursor: pointer;
+          }
+          button:hover {
+            cursor: pointer;
+          }
+          button.ghost {
+            background-color: transparent;
+            border-color: #FFFFFF;
+          }
+        }
+        
+      }
+
+      .right-contain {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        
+        .sign-contain {
+          width: 90%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          height: 100%;
+          
+          
+          .icons {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 30%;
+            width: 100%;
+            
+            h1 {
+              color: #2193BC;
+              font-size: 2rem;
+              font-weight: bolder;
+            }
+
+            .logos {
+              display: flex;
+              margin-bottom: 10px;
+              width: 30%;
+              justify-content: space-evenly;
+              .f {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                border: 1px solid black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .fa-linkedin {
+                  color: #0976b4;
+                }
+                .fa-google {
+                  color: #dd4b39;
+                }
+                .fa-facebook {
+                  color: #3b5998;
+                }
+                * {
+                  width: 50%;
+                  height: 50%;
+                  cursor: pointer;
+                }
+              }
+
+            }
+          }
+          
+          .signup-form {
+            width: 60%;
+            display: grid;
+            grid-template-rows: repeat(6,1fr);
+            grid-template-columns: repeat(4,1fr);
+            grid-template-areas: "a a b b"
+                                 "c c c c"
+                                 "d d e e"
+                                 "f f f f"
+                                 "g g g g"
+                                 ". h h .";
+            gap: 20px 50px;
+
+            .nom-container {
+              grid-area: a;
+            }
+            .prenom-container {
+              grid-area: b;
+            }
+            .email-container {
+              grid-area: c;
+            }
+            .service-container {
+              grid-area: d;
+            }
+            .type-container {
+              grid-area: e;
+            }
+            .password-container {
+              grid-area: f;
+            }
+            .ch-password-container {
+              grid-area: g;
+            }
+            .btn-signup {
+              grid-area: h;
+            }
+            .cont {
+              display: flex;
+              flex-direction: column;
+              
+              .err-txt {
+                color: red;
+                font-size: 12px;
+                margin-top: 5px;
+                margin-bottom: 0px;
+              }
+              .contain:focus-within {
+                box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+                border: 1px solid rgba(81, 203, 238, 1);
+              }
+              .contain {
+                display: flex;
+                align-items: center;
+                border: none;
+                border-radius: 19px;
+                font-size: 1.5rem;
+                padding: 5px 10px;
+                width: 100%;
+                background-color: rgba(142, 202, 230, 0.1);
+                
+                select, input {
+                  border: none;
+                  width: 90%;
+                  outline: none;
+                  font-family: 'Cairo', sans-serif;
+                  background-color: rgba(142, 202, 230, 0.014);
+                }
+                
+                select {
+                  border-left: 1px solid black;
+                  padding-left: 5px;
+  
+                  .opt {
+                    margin-top: 15px;
+                  }
+                  
+                  .none {
+                    display: none;
+                  }
+                }
+                .icna {
+                  width: 10%;
+                }
+                .icn {
+                  padding-right: 10px;
+                }
+                .eye-icn {
+                  cursor: pointer;
+                  font-size: 20px;
+                }
+  
+                
+              }
+            }
+            
+            .btn-signup {
+
+              button {
+                border-radius: 20px;
+                border: 1px solid #2193BC;
+                background-color: #2193BC;
+                color: #FFFFFF;
+                font-size: 12px;
+                font-weight: bold;
+                padding: 12px 45px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                transition: transform 80ms ease-in;
+              }
+              
+              button:active {
+                transform: scale(0.95);
+              }
+              
+              button:focus {
+                outline: none;
+                cursor: pointer;
+              }
+              button:hover {
+                cursor: pointer;
+              }
+              button.ghost {
+                background-color: transparent;
+                border-color: #FFFFFF;
+              }
+            }
+          }
+
+
+
+        }
+      }
+    }
+    
+  
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
