@@ -5,7 +5,6 @@ import "../../index.css"
 const Sign = () => {
     return (
     <div className="sign">
-      <Header />
       <Card />
     </div>
     )

@@ -2,7 +2,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../../index.css'
-import logoimg from "../../images/l.jpg"
+import logoimg from "../../images/lo.svg"
 import useForm from './useForm'
 import validation from './validation'
 import usePassword from './usePassword'
@@ -22,7 +22,7 @@ const Signup = ({ submitForm }) => {
         <div className="signup-container">
             <div className="left-contain">
                 <div className="logo-contain">
-                    <img src={logoimg} className="lg"/>
+                    <img src={logoimg} height="80" className="lg"/>
                 </div>
                 <div className="card-txt">
                     <h1>Bienvenue !</h1>

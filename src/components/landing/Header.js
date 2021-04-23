@@ -15,13 +15,13 @@ const Header = () => {
                         <a href="" className="hero nav-btn">Hero</a>
                     </li>
                     <li className="nav-el">
-                        <a href="" className="about nav-btn">About us</a>
+                        <a href="/settings" className="about nav-btn">Settings</a>
                     </li>
                     <li className="nav-el">
-                        <a href="" className="contact nav-btn">Contact us</a>
+                        <a href="/signup" className="contact nav-btn">Sign up</a>
                     </li>
                     <li className="nav-el log">
-                        <a href="/signin" className="login nav-btn">Login</a>
+                        <a href="/login" className="login nav-btn">Login</a>
                     </li>
                     <li className="check">
                         <FontAwesomeIcon icon={fa} className="fa" />
