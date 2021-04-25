@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import validateInfo from './validation.js'
 
-const useForm = (callback) => {
+const useForm = (callback, validate) => {
   const [values, setValues] = useState({
+
     email: '',
     password: ''
   });
@@ -19,6 +21,7 @@ const useForm = (callback) => {
   const handleSubmit = e => {
     e.preventDefault();
 
+    setErrors(validateInfo(values));
     setIsSubmitting(true);
   };
 

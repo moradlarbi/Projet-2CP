@@ -111,26 +111,27 @@ const Signup = ({ submitForm }) => {
                         <div className="cont service-container">
                             <div className=" contain">
                                 <FontAwesomeIcon icon={faUserTag} className="icn icna" />
-                                <select name="Service">
+                                <select name="Service" name="role" value={values.role} onChange={handleChange}>
                                     <option value='' disabled selected className="none">Select role</option> 
                                     <option value="admin"> Administrateur </option>
                                     <option value="marche"> Service Marché </option>
                                     <option value="commande"> Service Commandes </option>
                                     <option value="budget"> Service Budget </option>
                                     <option value="comptable"> Agence comptable </option>
-
                                 </select>
                             </div>
+                            {errors.role && <p className="err-txt">{errors.role}</p>}
                         </div>
                         <div className="cont type-container">
                             <div className=" contain">
                                 <FontAwesomeIcon icon={faUserTag} className="icn icna" />
-                                <select name="type">
-                                <option value='' disabled selected className="none">Select type</option>
+                                <select name="type" name="type" value={values.type} onChange={handleChange}>
+                                    <option value='' disabled selected className="none">Select type</option>
                                     <option value="consulter" className="opt"> Consultation </option>
                                     <option value="modifier"> Modification </option>	
                                 </select>
                             </div>
+                            {errors.type && <p className="err-txt">{errors.type}</p>}
                         </div>
                         <div className="cont password-container">
                             <div className="contain">
