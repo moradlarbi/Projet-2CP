@@ -688,7 +688,6 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       height: 80vh;
       width: 100%;
 
@@ -703,6 +702,515 @@ body {
         justify-content: center;
         align-items: center;
 
+        .commandes-form {
+          display: grid;
+            grid-template-rows: repeat(5,1fr);
+            grid-template-columns: repeat(3,1fr);
+            grid-template-areas: "a b c"
+                                 "d e f"
+                                 "g h i"
+                                 "j j j"
+                                 "k l m";
+            gap: 20px 50px;
+
+            .dateFacPer-container {
+              grid-area: a;
+            }
+            .numFacPer-container {
+              grid-area: b;
+            }
+            .numFacDef-container {
+              grid-area: c;
+            }
+            .dateCom-container {
+              grid-area: d;
+            }
+            .numCom-container {
+              grid-area: e;
+            }
+            .numBon-container {
+              grid-area: f;
+            }
+            .respo-container {
+              grid-area: g;
+            }
+            .montant-container {
+              grid-area: h;
+            }
+            .date-send {
+              grid-area: i;
+            }
+            .desc-container {
+              grid-area: j;
+            }
+            .file-container {
+              grid-area: k;
+            }
+            .btn-send {
+              grid-area: m;
+            }
+            .btn-arreter {
+              grid-area: l;
+            }
+            .cont {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              
+              .err-txt {
+                color: red;
+                font-size: 12px;
+                margin-top: 5px;
+                margin-bottom: 0px;
+              }
+              .content:focus-within {
+                box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+                border: 1px solid rgba(81, 203, 238, 1);
+              }
+              .content {
+                display: flex;
+                align-items: center;
+                border: none;
+                border-radius: 19px;
+                font-size: 1.5rem;
+                padding: 5px 10px;
+                width: 100%;
+                background-color: #E3F2F9;
+                
+                select, input {
+                  border: none;
+                  width: 90%;
+                  outline: none;
+                  font-family: 'Cairo', sans-serif;
+                  background-color: #E3F2F9;
+                }
+
+                select {
+                  padding-left: 5px;
+                  
+                  .none {
+                    display: none;
+                  }
+                }
+                
+                input[type="file"]{
+                  display: none;
+                }
+                .icn-cont {
+                  font-size: 1rem;
+                  cursor: pointer;
+                  width: 100%;
+                  font-family: 'Cairo', sans-serif;
+                  display: flex;
+                  justify-content: space-evenly;
+                  align-items: center;
+                }
+              }
+
+            }
+            .btn-send {
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+
+              button {
+                
+                border-radius: 10px;
+                border: none;
+                background-color: #FFB703;
+                font-size: 12px;
+                font-weight: bold;
+                padding: 12px 45px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                transition: transform 80ms ease-in;
+                
+                
+              }
+                button:active {
+                  transform: scale(0.95);
+                }
+                
+                button:focus {
+                  outline: none;
+                  cursor: pointer;
+                }
+                button:hover {
+                  cursor: pointer;
+                }
+                button.ghost {
+                  background-color: transparent;
+                  border-color: #FFFFFF;
+                }
+            }
+            .btn-arreter {
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+
+              button {
+                
+                border-radius: 10px;
+                border: none;
+                background-color: rgb(240, 60, 60);
+                font-size: 12px;
+                font-weight: bold;
+                padding: 12px 45px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                transition: transform 80ms ease-in;
+                
+                
+              }
+                button:active {
+                  transform: scale(0.95);
+                }
+                
+                button:focus {
+                  outline: none;
+                  cursor: pointer;
+                }
+                button:hover {
+                  cursor: pointer;
+                }
+                button.ghost {
+                  background-color: transparent;
+                  border-color: #FFFFFF;
+                }
+            }
+        }
+        .budget-form {
+          display: grid;
+            grid-template-rows: repeat(5,1fr);
+            grid-template-columns: repeat(3,1fr);
+            grid-template-areas: "a b ."
+                                 "c d e"
+                                 "f f f"
+                                 "g g g"
+                                 "h i j";
+            gap: 20px 50px;
+
+            .respo-container {
+              grid-area: a;
+            }
+            .date-container {
+              grid-area: b;
+            }
+            .dateCF-container {
+              grid-area: c;
+            }
+            .dateVisa-container {
+              grid-area: d;
+            }
+            .dateMend-container {
+              grid-area: e;
+            }
+            .motif-container {
+              grid-area: f;
+            }
+            .desc-container {
+              grid-area: g;
+            }
+            .file-container {
+              grid-area: h;
+            }
+            .btn-send {
+              grid-area: j;
+            }
+            .btn-arreter {
+              grid-area: i;
+            }
+            .cont {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              
+              .err-txt {
+                color: red;
+                font-size: 12px;
+                margin-top: 5px;
+                margin-bottom: 0px;
+              }
+              .content:focus-within {
+                box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+                border: 1px solid rgba(81, 203, 238, 1);
+              }
+              .content {
+                display: flex;
+                align-items: center;
+                border: none;
+                border-radius: 19px;
+                font-size: 1.5rem;
+                padding: 5px 10px;
+                width: 100%;
+                background-color: #E3F2F9;
+                
+                select, input {
+                  border: none;
+                  width: 90%;
+                  outline: none;
+                  font-family: 'Cairo', sans-serif;
+                  background-color: #E3F2F9;
+                }
+
+                select {
+                  padding-left: 5px;
+                  
+                  .none {
+                    display: none;
+                  }
+                }
+                
+                input[type="file"]{
+                  display: none;
+                }
+                .icn-cont {
+                  font-size: 1rem;
+                  cursor: pointer;
+                  width: 100%;
+                  font-family: 'Cairo', sans-serif;
+                  display: flex;
+                  justify-content: space-evenly;
+                  align-items: center;
+                }
+              }
+
+            }
+            .btn-send {
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+
+              button {
+                
+                border-radius: 10px;
+                border: none;
+                background-color: #FFB703;
+                font-size: 12px;
+                font-weight: bold;
+                padding: 12px 45px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                transition: transform 80ms ease-in;
+                
+                
+              }
+                button:active {
+                  transform: scale(0.95);
+                }
+                
+                button:focus {
+                  outline: none;
+                  cursor: pointer;
+                }
+                button:hover {
+                  cursor: pointer;
+                }
+                button.ghost {
+                  background-color: transparent;
+                  border-color: #FFFFFF;
+                }
+            }
+            .btn-arreter {
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+
+              button {
+                
+                border-radius: 10px;
+                border: none;
+                background-color: rgb(240, 60, 60);
+                font-size: 12px;
+                font-weight: bold;
+                padding: 12px 45px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                transition: transform 80ms ease-in;
+                
+                
+              }
+                button:active {
+                  transform: scale(0.95);
+                }
+                
+                button:focus {
+                  outline: none;
+                  cursor: pointer;
+                }
+                button:hover {
+                  cursor: pointer;
+                }
+                button.ghost {
+                  background-color: transparent;
+                  border-color: #FFFFFF;
+                }
+            }
+        }
+        .respo-form {
+          display: grid;
+            grid-template-rows: repeat(4,1fr);
+            grid-template-columns: repeat(3,1fr);
+            grid-template-areas: "a b ."
+                                 "c d e"
+                                 "f f f"
+                                 "g h i ";
+            gap: 20px 50px;
+
+            .respo-container {
+              grid-area: a;
+            }
+            .date-container {
+              grid-area: b;
+            }
+            .completer-container {
+              grid-area: c;
+            }
+            .dateComplement-container {
+              grid-area: d;
+            }
+            .datePay-container {
+              grid-area: e;
+            }
+            .desc-container {
+              grid-area: f;
+            }
+            .file-container {
+              grid-area: g;
+            }
+            .btn-send {
+              grid-area: i;
+            }
+            .btn-arreter {
+              grid-area: h;
+            }
+            .cont {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              
+              .err-txt {
+                color: red;
+                font-size: 12px;
+                margin-top: 5px;
+                margin-bottom: 0px;
+              }
+              .content:focus-within {
+                box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+                border: 1px solid rgba(81, 203, 238, 1);
+              }
+              .content {
+                display: flex;
+                align-items: center;
+                border: none;
+                border-radius: 19px;
+                font-size: 1.5rem;
+                padding: 5px 10px;
+                width: 100%;
+                background-color: #E3F2F9;
+                
+                select, input {
+                  border: none;
+                  width: 90%;
+                  outline: none;
+                  font-family: 'Cairo', sans-serif;
+                  background-color: #E3F2F9;
+                }
+
+                select {
+                  padding-left: 5px;
+                  
+                  .none {
+                    display: none;
+                  }
+                }
+                
+                input[type="file"]{
+                  display: none;
+                }
+                .icn-cont {
+                  font-size: 1rem;
+                  cursor: pointer;
+                  width: 100%;
+                  font-family: 'Cairo', sans-serif;
+                  display: flex;
+                  justify-content: space-evenly;
+                  align-items: center;
+                }
+              }
+
+            }
+            .btn-send {
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+
+              button {
+                
+                border-radius: 10px;
+                border: none;
+                background-color: #FFB703;
+                font-size: 12px;
+                font-weight: bold;
+                padding: 12px 45px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                transition: transform 80ms ease-in;
+                
+                
+              }
+                button:active {
+                  transform: scale(0.95);
+                }
+                
+                button:focus {
+                  outline: none;
+                  cursor: pointer;
+                }
+                button:hover {
+                  cursor: pointer;
+                }
+                button.ghost {
+                  background-color: transparent;
+                  border-color: #FFFFFF;
+                }
+            }
+            .btn-arreter {
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+
+              button {
+                
+                border-radius: 10px;
+                border: none;
+                background-color: rgb(240, 60, 60);
+                font-size: 12px;
+                font-weight: bold;
+                padding: 12px 45px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                transition: transform 80ms ease-in;
+                
+                
+              }
+                button:active {
+                  transform: scale(0.95);
+                }
+                
+                button:focus {
+                  outline: none;
+                  cursor: pointer;
+                }
+                button:hover {
+                  cursor: pointer;
+                }
+                button.ghost {
+                  background-color: transparent;
+                  border-color: #FFFFFF;
+                }
+            }
+        }
         .marche-form {
           display: grid;
             grid-template-rows: repeat(4,1fr);

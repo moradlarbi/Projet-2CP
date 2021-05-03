@@ -13,7 +13,7 @@ import usePassword from './usePassword'
 import validation from './validation'
 import { faSignInAlt, faUser, faEnvelope, faLock, faUserTag, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 library.add(fab)
-const Card = ( {submitForm} ) => {
+const Card = ( {submitForm, isSubmited} ) => {
     const { handleChange, handleSubmit, values, errors } = useForm(
         submitForm,
         validation
@@ -29,9 +29,11 @@ const Card = ( {submitForm} ) => {
             Axios.post('http://localhost:3004/login', {
             e_mail: values.email,
             mdpss: values.password
+            
            // })/*.then((respone) => {
            // console.log('infos envoyees')
         })
+        
     }
 
     return (

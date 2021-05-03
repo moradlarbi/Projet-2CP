@@ -17,46 +17,7 @@ const Acc = ({submitForm, arreter, page}) => {
             
             <div className="form-container">
                 <h1>Dossier n°1: Service budget</h1>
-                <form onSubmit={handleSubmit} className="marche-form" noValidate>
-                    <div className="cont type-container">
-                        <div className="content">
-                            <select name="type" name="type" defaultValue={''} value={values.type} onChange={handleChange}>
-                                <option value='' disabled className="none">Selecter type de préstation *</option> 
-                                <option value="marche1"> marche1 </option>
-                                <option value="marche2"> marche2 </option>
-                                <option value="marche3"> marche3 </option>
-                            </select>
-                        </div>
-                        {errors.type && <p className="err-txt">{errors.type}</p>}
-                    </div>
-                    <div className="cont objet-container">
-                        <div className=" content">    
-                            <input 
-                                type="text"
-                                name="objet"
-                                value={values.objet}
-                                onChange={handleChange}
-                                placeholder="Objet *" 
-                                className="objet" 
-                                autocomplete="off" required/>
-                        </div>
-                        {errors.objet && <p className="err-txt">{errors.objet}</p>}
-                    </div>
-                    <div className="cont fournisseur-container">
-                        <div className=" content">
-                            
-                            <input 
-                                type="text" 
-                                name="fournisseur"
-                                value={values.fournisseur}
-                                onChange={handleChange}
-                                placeholder="Fournisseur *" 
-                                className="fournisseur" 
-                                autocomplete="off" required/>
-                            
-                        </div>
-                        {errors.fournisseur && <p className="err-txt">{errors.fournisseur}</p>}
-                    </div>
+                <form onSubmit={handleSubmit} className="budget-form" noValidate>
                     <div className="cont respo-container">
                         <div className=" content">
                         <input 
@@ -71,41 +32,76 @@ const Acc = ({submitForm, arreter, page}) => {
                         </div>
                         {errors.respo && <p className="err-txt">{errors.respo}</p>}
                     </div>
-                    <div className="cont num-container">
-                        <div className=" content">
-                        <input 
-                                type="text" 
-                                name="num"
-                                value={values.num}
-                                onChange={handleChange}
-                                placeholder="Numéro de convention *" 
-                                className="num" 
-                                autocomplete="off" required/>
-                        </div>
-                        {errors.num && <p className="err-txt">{errors.num}</p>}
-                    </div>
                     <div className="cont date-container">
-                        <div className="content">
-                                                       
+                        <div className="content">                             
                             <input 
                                 type= "date"
                                 value={values.date} 
                                 name="date"
-
                                 className="date"/>
                         </div>
                         {errors.date && <p className="err-txt">{errors.date}</p>}
                         
                     </div>
+                    <div className="cont dateCF-container">
+                        <div className=" content">
+                            <input 
+                                type= "date"
+                                value={values.dateCF} 
+                                onChange={handleChange}
+                                name="dateCF"
+                                placeholder="Date d'engagement CF *"
+                                className="dateCF"required/>
+                            
+                        </div>
+                        {errors.dateCF && <p className="err-txt">{errors.dateCF}</p>}
+                    </div>
+                    <div className="cont dateVisa-container">
+                        <div className=" content">
+                            <input 
+                                type= "date"
+                                value={values.dateVisa} 
+                                onChange={handleChange}
+                                name="dateVisa"
+                                placeholder="Date de visa/rejet définitive *"
+                                className="dateVisa"required/>
+                            
+                        </div>
+                        {errors.dateVisa && <p className="err-txt">{errors.dateVisa}</p>}
+                    </div>
+                    <div className="cont dateMend-container">
+                        <div className=" content">
+                            <input 
+                                type= "date"
+                                value={values.dateMend} 
+                                onChange={handleChange}
+                                name="dateMend"
+                                placeholder="Date de Mondatement *"
+                                className="dateMend"required/>
+                            
+                        </div>
+                        {errors.dateMend && <p className="err-txt">{errors.dateMend}</p>}
+                    </div>
+                    <div className="cont motif-container">
+                        <div className="content">
+                            <input 
+                                type="text"
+                                name="motif"
+                                value={values.motif}
+                                onChange={handleChange} 
+                                placeholder="Motif" 
+                                className="motif" autoComplete="off"/>
+                        </div>
+                    </div>
                     <div className="cont desc-container">
                         <div className="content">
                             <input 
-                                type="textarea"
+                                type="text"
                                 name="desc"
                                 value={values.desc}
                                 onChange={handleChange} 
                                 placeholder="Observation" 
-                                className="desc"/>
+                                className="desc" autoComplete="off"/>
                         </div>
                     </div>
                     <div className="cont file-container">

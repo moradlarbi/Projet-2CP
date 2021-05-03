@@ -4,12 +4,12 @@ import validateInfo from './validation.js'
 const useForm = (callback, validate, page) => {
   const [values, setValues] = useState({
 
-    type: '',
-    objet: '',
-    fournisseur: '',
+    dateCF: '',
+    dateVisa: '',
+    dateMend: '',
     respo: '',
-    num: '',
     date: '',
+    motif: '',
     desc: '',
     file: '',
 
