@@ -24,21 +24,21 @@ const useForm = (callback, validate) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setErrors(validateInfo(values));
+
     setIsSubmitting(true);
     console.log(values);
   };
 
-  useEffect(
-    () => {
-      if (Object.keys(errors).length === 0 && isSubmitting) {
-        callback();
-      }
-    },
-    [errors]
-  );
+  // useEffect(
+  //   () => {
+  //     if (Object.keys(errors).length === 0 && isSubmitting) {
+  //       callback();
+  //     }
+  //   },
+  //   [errors]
+  // );
 
-  return { handleChange, handleSubmit, values, errors };
+  return { handleChange, handleSubmit, values };
 };
 
 export default useForm;

@@ -14,7 +14,7 @@ import validation from './validation'
 import { faSignInAlt, faUser, faEnvelope, faLock, faUserTag, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 library.add(fab)
 const Card = ( {submitForm, isSubmited} ) => {
-    const { handleChange, handleSubmit, values, errors } = useForm(
+    const { handleChange, handleSubmit, values } = useForm(
         submitForm,
         validation
       );
@@ -23,18 +23,34 @@ const Card = ( {submitForm, isSubmited} ) => {
         const viewProfile = function() {
             history.push("/signup");
         };
-
-        const SubmitFunc = () => {
-            //il faut trouver condition pour appeler submitForm
-            Axios.post('http://localhost:3004/login', {
-            e_mail: values.email,
-            mdpss: values.password
+    const [errors, setErrors] = useState({email: '', password: ''})
+    const [err, setErr] = useState({email: '', password: ''})
+    useEffect(() => {
+        fetch("/users/").then( res => {
+            if (res.ok) {
+                return res.json()
+            }
+        }).then(jsonRes => {
+            if (jsonRes.err){
+                setErr({...err, email: jsonRes.err.email, password: jsonRes.err.pass})  
+            }
             
-           // })/*.then((respone) => {
-           // console.log('infos envoyees')
         })
+    })
+    const SubmitFunc = () => {
+        Axios.post('http://localhost:3006/login', {
+        e_mail: values.email,
+        mdpss: values.password
+        
+        // })/*.then((respone) => {
+        // console.log('infos envoyees')
+        })
+        setErrors({...errors, email: err.email, password: err.password})
         
     }
+    
+   
+    
 
     return (
         <div className="login-container">
@@ -87,8 +103,8 @@ const Card = ( {submitForm, isSubmited} ) => {
                             </div>
                             
                             
-                            <div className="btn-login">
-                                <button type="submit" className="btn-sign" onClick={SubmitFunc}> Se connecter <FontAwesomeIcon icon={faSignInAlt} /> </button>
+                            <div className="btn-login" onClick={SubmitFunc}>
+                                <button type="submit" className="btn-sign" > Se connecter <FontAwesomeIcon icon={faSignInAlt} /> </button>
                             </div>
                         </form>
                     </div>

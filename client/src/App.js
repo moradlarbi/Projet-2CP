@@ -3,8 +3,8 @@ import Sign from "./components/login/Sign.js"
 import Form from "./components/signup/Form.js"
 import Settings from "./components/settings/Settings.js"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-
 function App() {
+  
   return (
       <Router>
         <Switch>
@@ -14,6 +14,7 @@ function App() {
           <Route path='/settings' exact component={Settings} />
         </Switch>
       </Router>
+      
   );
 }
 

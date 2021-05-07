@@ -16,15 +16,34 @@ library.add(fab)
 
 const Signup = ({ submitForm }) => {
 
-    const { handleChange, handleSubmit, values, errors } = useForm(
+    const { handleChange, handleSubmit, values } = useForm(
         submitForm,
         validation
       );
         const [PassInputType, ToggleIcon] = usePassword();
         const [PassInputType2, ToggleIcon2] = usePassword2();
-
+        const [errors, setErrors] = useState({username: '', userprenom: '', role: '', type: '',email: '', password: '', password2: ''})
+        const [err, setErr] = useState({username: '', userprenom: '', role: '', type: '',email: '', password: '', password2: ''})
+        useEffect(() => {
+            fetch("/users/").then( res => {
+                if (res.ok) {
+                    return res.json()
+                }
+            }).then(jsonRes => {
+                    setErr({...err,
+                        username: jsonRes.erreur.username,
+                        userprenom: jsonRes.erreur.userprenom,
+                        role: jsonRes.erreur.role,
+                        type: jsonRes.erreur.type,
+                        email: jsonRes.erreur.email,
+                        password: jsonRes.erreur.password,
+                        password2: jsonRes.erreur.password2
+                    })  
+                
+            })
+        })
 const SubmitFunc = () => {
-        Axios.post('http://localhost:3004/signup', {
+        Axios.post('http://localhost:3006/signup', {
         nom: values.username,
         prenom: values.userprenom,
         e_mail: values.email,
@@ -34,6 +53,15 @@ const SubmitFunc = () => {
         mdpss2:values.password2
        // })/*.then((respone) => {
        // console.log('infos envoyees')
+    })
+    setErrors({...errors,
+        username: err.username,
+        userprenom: err.userprenom,
+        role: err.role,
+        type: err.type,
+        email: err.email,
+        password: err.password,
+        password2: err.password2
     })
 }
 
@@ -172,8 +200,8 @@ const SubmitFunc = () => {
                             {errors.password2 && <p className="err-txt">{errors.password2}</p>}
                         </div>
                         
-                        <div className="btn-signup">
-                            <button type="submit" className="btn-sign" onClick={SubmitFunc}> S'inscrire <FontAwesomeIcon icon={faSignInAlt} /> </button>
+                        <div className="btn-signup" onClick={SubmitFunc}>
+                            <button type="submit" className="btn-sign" > S'inscrire <FontAwesomeIcon icon={faSignInAlt} /> </button>
                         </div>
                        
                     </form>

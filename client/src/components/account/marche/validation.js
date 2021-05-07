@@ -1,7 +1,7 @@
 export default function validateInfo(values) {
     let errors = {};
     
-    /*if (!values.type) {
+    if (!values.type) {
       errors.type = 'Type requit';
     } 
     if (!values.objet) {
@@ -15,7 +15,7 @@ export default function validateInfo(values) {
     } 
     if (!values.num) {
         errors.num = 'numero requit';
-    } */
+    } 
     
     return errors;
   }

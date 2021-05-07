@@ -10,7 +10,7 @@ const application = express()
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '22052001',
+    password: '123456789',
     database: 'projet_bdd'
 })
 
@@ -23,12 +23,42 @@ application.use(cors())
 application.use(express.json())
 application.use(express.urlencoded({ extended: false}))
 
-const authRouter = require('./routes/users')
-
+const all = require('./routes/users')
+const authRouter = all.router
+const errors = all.errors
+const signErrors = all.erreur
 ///Define routes
 application.use('/', authRouter)
 
+const app = express()
+router = express.Router()
+usersRoute =  (req, res) => {
+    res.json({
+        erreur: {
+            username: signErrors.username,
+            userprenom: signErrors.userprenom,
+            role: signErrors.role,
+            type: signErrors.type,
+            email: signErrors.email, 
+            password: signErrors.password,
+            password2: signErrors.password2
+        },
+        err: {
+            email: errors.email, 
+            pass: errors.password
+        }
+    })
+}
 
-application.listen(3004, () => {
-    console.log('running on port 3004')
+
+router.get("/", usersRoute)
+
+app.use("/users/", router)
+
+
+app.listen(3001, function(){
+    console.log("node working")
+})
+application.listen(3006, () => {
+    console.log('running on port 3006')
 })
