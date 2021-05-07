@@ -99,6 +99,7 @@ router.post('/signup/', (req, res) => {
     }
 })
 var errors = {}
+var info = {}
 router.post('/login/', async (req, res) => {
     const adrss_email = req.body.e_mail 
     const mp = req.body.mdpss
@@ -107,6 +108,16 @@ router.post('/login/', async (req, res) => {
     // VERIFIE LES CHAMPS 
     errors.email = ''
     errors.password = ''
+
+    info.id = ''
+    info.nom = ''
+    info.prenom = ''
+    info.email = ''
+    info.psswrd = ''
+    info.service = ''
+    info.role = ''
+    info.CT = ''
+
     if (!adrss_email ){
         errors.email = 'email est vide';
         return console.log(errors.email)
@@ -125,9 +136,17 @@ router.post('/login/', async (req, res) => {
         } else {
             /////////
             ////////
+            info.id = results[0].id_user
+            info.nom = results[0].nom
+            info.prenom = results[0].prenom
+            info.email = results[0].email
+            info.psswrd = results[0].password
+            info.service = results[0].service
+            info.role = results[0].type
+            info.CT = results[0].create_time
             
             console.log('WELCOME TO YOUR PROFILE')
         }
     })
 })
-module.exports = {router, errors, erreur}
+module.exports = {router, errors, erreur, info}
