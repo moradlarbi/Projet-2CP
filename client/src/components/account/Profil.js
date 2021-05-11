@@ -1,41 +1,45 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
 import '../../index.css'
 import Header from '../landing/Header.js'
-import Acc1 from './marche/Acc.js'
-import Acc2 from './commandes/Acc.js'
+import Marche from './marche/Acc.js'
+import Commandes from './commandes/Acc.js'
 import Acc3 from './budget/Acc.js'
 import Acc4 from './comptable/Acc.js'
 const Profil = () => {
-    const [page, setPage] = useState(0);
-    function submitForm() {
-        setPage(page+1);
-        if (page == 4){
-            setPage(0);
-        }
-    }
-    function creerDossier(){
-        setPage(1);
-    }
-    function arreter(){
-        setPage(0);
-    }
+    const [userInfo, setUserInfo] = useState({id: '', nom: '', prenom: '',email: '',psswrd: '',service: '',role: '',CT: ''})
+    const [userIn, setUserIn] = useState({id: '', nom: '', prenom: '',email: '',psswrd: '',service: '',role: '',CT: ''})
+    useEffect(() => {
+        fetch("/users/").then( res => {
+            if (res.ok) {
+                return res.json()
+            }
+        }).then(jsonRes => {
+            if (jsonRes !== undefined){
+                setUserInfo({...userInfo,
+                    id: jsonRes.information.id,
+                    nom : jsonRes.information.nom,
+                    prenom : jsonRes.information.prenom,
+                    email : jsonRes.information.email,
+                    psswrd : jsonRes.information.psswrd,
+                    service : jsonRes.information.service,
+                    role : jsonRes.information.role,
+                    CT : jsonRes.information.CT
+                }) 
+            }
+                 
+            
+        })
+        
+        
+    })
+    
+    var d = '/' +userInfo.service
+    console.log(d)
     return (
         <div className="profil-container">
-            <Header />
-            <div className="btn-container">
-                <button onClick={creerDossier} >Nouveau Dossier +</button>
-            </div>
-            {page==1 &&
-                <Acc1 submitForm={submitForm} arreter={arreter} page={page}/>
-            }
-            {page==2 &&
-                <Acc2 submitForm={submitForm} arreter={arreter} page={page} />
-            }
-            {page==3 &&
-                <Acc3 submitForm={submitForm} arreter={arreter} page={page} />
-            }
-            {page==4 &&
-                <Acc4 submitForm={submitForm} arreter={arreter} page={page} />
+            {
+                userInfo.service !== '' && <Redirect to={'/'+userInfo.service}/>
             }
             
         </div>

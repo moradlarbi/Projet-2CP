@@ -4,37 +4,40 @@ const mysql = require('mysql')
 const bcrypt = require('bcryptjs')
 const router = express.Router()
 
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '123456789',
-    database: 'projet_bdd'
-})
+// const db = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '123456789',
+//     database: 'projet_bdd'
+// })
 var erreur = {}
+var i=2;
 router.post('/signup/', (req, res) => {
-    const nm = req.body.nom
-    const prnm = req.body.prenom
-    const adrss_email = req.body.e_mail 
-    const mp = req.body.mdpss
-    const mp2 = req.body.mdpss2
-    const srv = req.body.srvc
-    const type = req.body.tp 
+    var nm = req.body.nom
+    var prnm = req.body.prenom
+    var adrss_email = req.body.e_mail 
+    var mp = req.body.mdpss
+    var mp2 = req.body.mdpss2
+    var srv = req.body.srvc
+    var type = req.body.tp 
     erreur.username = ''
-    erreur.useprenom = ''
+    erreur.userprenom = ''
     erreur.email = ''
     erreur.role = ''
     erreur.type = ''
     erreur.password = ''
     erreur.password2 = ''
+    console.log(adrss_email + ' ' + req.body.e_mail)
     //console.log(req.body)
     // VERIFIE LES CHAMPS 
+    console.log("--------------------" )
     if (!nm){
         erreur.username = 'Nom est requit'
         console.log('un champs est vide ')
     }
     if(!prnm){
         erreur.userprenom = 'Prenom est requit'
-        console.log('prenom est requit ')
+        console.log('prenom est vide ')
     }
     if(!adrss_email){
         erreur.email = 'email est requit'
@@ -42,19 +45,19 @@ router.post('/signup/', (req, res) => {
     }
     if(!srv){
         erreur.role = 'Role est requit'
-        console.log('prenom est vide ')
+        console.log('role est vide ')
     }
     if(!type){
         erreur.type = 'Type est requit'
-        console.log('prenom est vide ')
+        console.log('type est vide ')
     }
     if(!mp){
         erreur.password = 'Mot de passe est requit'
-        console.log('prenom est vide ')
+        console.log('mdp est vide ')
     }
     if(!mp2){
         erreur.password2 = 'Mot de passe de confirmation est requit'
-        console.log('prenom est vide ')
+        console.log('mdp2 est vide ')
     }
     // VERIFIE L'ADRESSE EMAIL
     if (!/\S+@\S+\.\S+/.test(adrss_email)){
@@ -62,7 +65,7 @@ router.post('/signup/', (req, res) => {
         console.log('EMAIL INVALID')
     }
     // VERIFIER L'ADRESSE EMAIL ET LE MOT DE PASSE 
-    else {
+    /*else {
         db.query('SELECT email FROM user WHERE email = ?', [adrss_email], async (error, results) => {
             if (error) {console.log('la 1: '+error.message)}
 
@@ -96,10 +99,13 @@ router.post('/signup/', (req, res) => {
                 })
             }
         })
-    }
+    }*/
+    console.log(erreur)
 })
 var errors = {}
 var info = {}
+const httpProxy = require('http-proxy');
+const proxy = httpProxy.createServer({});
 router.post('/login/', async (req, res) => {
     const adrss_email = req.body.e_mail 
     const mp = req.body.mdpss
@@ -109,13 +115,13 @@ router.post('/login/', async (req, res) => {
     errors.email = ''
     errors.password = ''
 
-    info.id = ''
-    info.nom = ''
-    info.prenom = ''
-    info.email = ''
-    info.psswrd = ''
-    info.service = ''
-    info.role = ''
+    info.id = '1'
+    info.nom = 'morad'
+    info.prenom = 'larbi'
+    info.email = 'marche@esi.dz'
+    info.psswrd = '123456789'
+    info.service = 'marche'
+    info.role = 'consult'
     info.CT = ''
 
     if (!adrss_email ){
@@ -127,7 +133,9 @@ router.post('/login/', async (req, res) => {
         return console.log(errors.password)
         
     }
-    db.query('SELECT * FROM user WHERE email = ?', [adrss_email], async (error, results) => {
+    console.log(info.service);
+    
+    /*db.query('SELECT * FROM user WHERE email = ?', [adrss_email], async (error, results) => {
         if (error) {
             console.log(error.message)
         }
@@ -147,6 +155,6 @@ router.post('/login/', async (req, res) => {
             
             console.log('WELCOME TO YOUR PROFILE')
         }
-    })
+    })*/
 })
 module.exports = {router, errors, erreur, info}

@@ -30,6 +30,7 @@ const Signup = ({ submitForm }) => {
                     return res.json()
                 }
             }).then(jsonRes => {
+                if (jsonRes !== undefined)
                     setErr({...err,
                         username: jsonRes.erreur.username,
                         userprenom: jsonRes.erreur.userprenom,
@@ -39,8 +40,9 @@ const Signup = ({ submitForm }) => {
                         password: jsonRes.erreur.password,
                         password2: jsonRes.erreur.password2
                     })  
-                
+                    //console.log(jsonRes.erreur)
             })
+            
         })
 const SubmitFunc = () => {
         Axios.post('http://localhost:3006/signup', {
@@ -54,6 +56,7 @@ const SubmitFunc = () => {
        // })/*.then((respone) => {
        // console.log('infos envoyees')
     })
+    console.log(values.email + "hey")
     setErrors({...errors,
         username: err.username,
         userprenom: err.userprenom,
@@ -63,6 +66,7 @@ const SubmitFunc = () => {
         password: err.password,
         password2: err.password2
     })
+    console.log(errors)
 }
 
     return (

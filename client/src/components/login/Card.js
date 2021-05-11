@@ -13,7 +13,7 @@ import usePassword from './usePassword'
 import validation from './validation'
 import { faSignInAlt, faUser, faEnvelope, faLock, faUserTag, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 library.add(fab)
-const Card = ( {submitForm, isSubmited} ) => {
+const Card = ( {submitForm} ) => {
     const { handleChange, handleSubmit, values } = useForm(
         submitForm,
         validation
@@ -46,6 +46,7 @@ const Card = ( {submitForm, isSubmited} ) => {
         // console.log('infos envoyees')
         })
         setErrors({...errors, email: err.email, password: err.password})
+        submitForm()
         
     }
     

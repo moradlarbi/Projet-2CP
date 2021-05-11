@@ -982,7 +982,6 @@ body {
               align-items: center;
 
               button {
-                
                 border-radius: 10px;
                 border: none;
                 background-color: #FFB703;
@@ -1213,14 +1212,17 @@ body {
         }
         .marche-form {
           display: grid;
-            grid-template-rows: repeat(4,1fr);
+            grid-template-rows: repeat(5,1fr);
             grid-template-columns: repeat(3,1fr);
-            grid-template-areas: "a b c"
-                                 "d e f"
+            grid-template-areas: "f a b"
+                                 "c d e"
                                  "g g g"
-                                 "h j i";
+                                 "h i ."
+                                 "j k l";
             gap: 20px 50px;
-
+            .date-debut-container {
+              grid-area: f;
+            }
             .type-container {
               grid-area: a;
             }
@@ -1236,8 +1238,8 @@ body {
             .num-container {
               grid-area: e;
             }
-            .date-container {
-              grid-area: f;
+            .date-limite-container {
+              grid-area: i;
             }
             .desc-container {
               grid-area: g;
@@ -1245,11 +1247,14 @@ body {
             .file-container {
               grid-area: h;
             }
+            .btn-sauv {
+              grid-area: j;
+            }
             .btn-send {
-              grid-area: i;
+              grid-area: k;
             }
             .btn-arreter {
-              grid-area: j;
+              grid-area: l;
             }
             .cont {
               display: flex;
@@ -1306,6 +1311,41 @@ body {
                 }
               }
 
+            }
+            .btn-sauv {
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+
+              button {
+                
+                border-radius: 10px;
+                border: none;
+                background-color: #13d188;
+                font-size: 12px;
+                font-weight: bold;
+                padding: 12px 45px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                transition: transform 80ms ease-in;
+                
+                
+              }
+                button:active {
+                  transform: scale(0.95);
+                }
+                
+                button:focus {
+                  outline: none;
+                  cursor: pointer;
+                }
+                button:hover {
+                  cursor: pointer;
+                }
+                button.ghost {
+                  background-color: transparent;
+                  border-color: #FFFFFF;
+                }
             }
             .btn-send {
               display: flex;

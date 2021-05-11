@@ -28,6 +28,7 @@ const authRouter = all.router
 const errors = all.errors
 const signErrors = all.erreur
 const info = all.info
+
 ///Define routes
 application.use('/', authRouter)
 

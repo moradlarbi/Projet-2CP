@@ -2,6 +2,7 @@ import React from 'react'
 import "../../../index.css"
 import useForm from './useForm'
 import validation from './validation'
+import Header from "../Service-march/header.js"
 import moment from 'react-moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileDownload } from '@fortawesome/free-solid-svg-icons'
@@ -13,10 +14,24 @@ const Acc = ({submitForm,arreter , page}) => {
       );
     return (
         <div className="acc-container">
-            
+            <Header />
             <div className="form-container">
-                <h1>Dossier n°1: Service marche</h1>
+                <h2>Remplissez ce formulaire </h2>
+                <h1>Dossier n°123: Service marche</h1>
                 <form onSubmit={handleSubmit} className="marche-form" noValidate>
+                    <div className="cont date-debut-container">
+                        <div className="content">
+                                                       
+                            <input 
+                                type= "date"
+                                value={values.date} 
+                                name="date"
+
+                                className="date"/>
+                        </div>
+                        {errors.date && <p className="err-txt">{errors.date}</p>}
+                        
+                    </div>
                     <div className="cont type-container">
                         <div className="content">
                             <select name="type" name="type" defaultValue={''} value={values.type} onChange={handleChange}>
@@ -83,19 +98,6 @@ const Acc = ({submitForm,arreter , page}) => {
                         </div>
                         {errors.num && <p className="err-txt">{errors.num}</p>}
                     </div>
-                    <div className="cont date-container">
-                        <div className="content">
-                                                       
-                            <input 
-                                type= "date"
-                                value={values.date} 
-                                name="date"
-
-                                className="date"/>
-                        </div>
-                        {errors.date && <p className="err-txt">{errors.date}</p>}
-                        
-                    </div>
                     <div className="cont desc-container">
                         <div className="content">
                             <input 
@@ -122,6 +124,22 @@ const Acc = ({submitForm,arreter , page}) => {
                                 <FontAwesomeIcon icon={faFileDownload} className="icn" />
                             </label>
                         </div>
+                    </div>
+                    <div className="cont date-limite-container">
+                        <div className="content">
+                                                       
+                            <input 
+                                type= "date"
+                                value={values.date} 
+                                name="date"
+
+                                className="date"/>
+                        </div>
+                        {errors.date && <p className="err-txt">{errors.date}</p>}
+                        
+                    </div>
+                    <div className="btn-sauv">
+                        <button type="submit" className="btn-done" > Sauvegarder </button>
                     </div>
                     <div className="btn-send">
                         <button type="submit" onClick={submitForm} className="btn-done" > Envoyer </button>
