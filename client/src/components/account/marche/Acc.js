@@ -6,12 +6,45 @@ import Header from "../Service-march/header.js"
 import moment from 'react-moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileDownload } from '@fortawesome/free-solid-svg-icons'
-const Acc = ({submitForm,arreter , page}) => {
+const Acc = ({submitForm}) => {
     const { handleChange, handleSubmit, values, errors } = useForm(
         submitForm,
         validation,
-        page
-      );
+    );
+    var duree = 10;
+    var date = new Date()
+    var debutDate = date.getFullYear()+'-'
+    if (date.getMonth()<10){
+        debutDate += '0'+date.getMonth()+'-'
+    }
+    else {
+        debutDate += date.getMonth()+'-'+date.getDate();
+    }
+    if (date.getDate() < 10){
+        debutDate += '0'+date.getDate()
+    }
+    else{
+        debutDate += date.getDate();
+    }
+    var date2 = new Date(date.getTime() +(duree*24*60*60*1000))
+    var limiteDate = date2.getFullYear()+'-'
+    if (date2.getMonth()<10){
+        limiteDate += '0'+date2.getMonth()+'-'
+    }
+    else {
+        limiteDate += date2.getMonth()+'-';
+    }
+    if (date2.getDate() < 10){
+        limiteDate += '0'+date2.getDate()
+    }
+    else{
+        limiteDate += date2.getDate();
+    }
+    var current = new Date()
+    var idDate = 'avance'
+    if (current.getTime() > date2.getTime()){
+        idDate = 'retard'
+    }
     return (
         <div className="acc-container">
             <Header />
@@ -24,7 +57,7 @@ const Acc = ({submitForm,arreter , page}) => {
                                                        
                             <input 
                                 type= "date"
-                                value={values.date} 
+                                value={debutDate} 
                                 name="date"
 
                                 className="date"/>
@@ -126,14 +159,13 @@ const Acc = ({submitForm,arreter , page}) => {
                         </div>
                     </div>
                     <div className="cont date-limite-container">
-                        <div className="content">
+                        <div className="content" id={idDate}>
                                                        
                             <input 
                                 type= "date"
-                                value={values.date} 
+                                value={limiteDate} 
                                 name="date"
-
-                                className="date"/>
+                                className="date2"/>
                         </div>
                         {errors.date && <p className="err-txt">{errors.date}</p>}
                         
@@ -145,7 +177,7 @@ const Acc = ({submitForm,arreter , page}) => {
                         <button type="submit" onClick={submitForm} className="btn-done" > Envoyer </button>
                     </div>
                     <div className="btn-arreter">
-                        <button type="" onClick={arreter} className="btn-" > Annuler </button>
+                        <button type="" className="btn-" > Annuler </button>
                     </div>
                 </form>
             </div>

@@ -3,8 +3,11 @@ import React, { useState } from "react";
 import Acc from "../marche/Acc.js"
 import Dossier from "./Dossier.js"
 const Milieu = () => {
+    var debutDate
     function addChild(){
         setNum([...Num,124])
+        var showdate = new Date();
+        
     }
     const [Num, setNum] = useState([])
     return (

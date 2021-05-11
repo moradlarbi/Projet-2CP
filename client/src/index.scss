@@ -1240,6 +1240,20 @@ body {
             }
             .date-limite-container {
               grid-area: i;
+              
+              #retard {
+                border: 1px solid red;
+                 input {
+                   color: red;
+                 }
+              }
+              #avance {
+                border: 1px solid green;
+                 input {
+                   color: green;
+                 }
+              }
+
             }
             .desc-container {
               grid-area: g;
