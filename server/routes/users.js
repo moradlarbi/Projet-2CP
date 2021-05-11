@@ -19,6 +19,7 @@ router.post('/signup/', (req, res) => {
     var mp2 = req.body.mdpss2
     var srv = req.body.srvc
     var type = req.body.tp 
+    
     erreur.username = ''
     erreur.userprenom = ''
     erreur.email = ''
@@ -130,27 +131,37 @@ router.post('/login/', async (req, res) => {
         console.log('LE VIDE DANS LES 2')
     }
     else{
-        db.query('SELECT * FROM user WHERE email = ?', [adrss_email], async (error, results) => {
-        if (error) {
-            console.log(error.message)
-        }
-        if ( (results.length == 0) || !(await bcrypt.compare(mp, results[0].password)) ) {
-            errors.email = 'inexistant !!'
-        } else {
-            /////////
-            ////////
-            info.id = results[0].id_user
-            info.nom = results[0].nom
-            info.prenom = results[0].prenom
-            info.email = results[0].email
-            info.pssword = results[0].password
-            info.service = results[0].service
-            info.role = results[0].type
-            info.CT = results[0].create_time
+        info.id = '1'
+        info.nom = 'larbi'
+        info.prenom = 'morad'
+        info.email = 'marche@esi.dz'
+        info.pssword = '123456789'
+        info.service = 'marche'
+        info.role = 'modifier'
+        info.CT = ''
+
+    //     db.query('SELECT * FROM user WHERE email = ?', [adrss_email], async (error, results) => {
+    //     if (error) {
+    //         console.log(error.message)
+    //     }
+    //     if ( (results.length == 0) || !(await bcrypt.compare(mp, results[0].password)) ) {
+    //         errors.email = 'inexistant !!'
+    //     } else {
+    //         /////////
+    //         ////////
+    //         info.id = results[0].id_user
+    //         info.nom = results[0].nom
+    //         info.prenom = results[0].prenom
+    //         info.email = results[0].email
+    //         info.pssword = results[0].password
+    //         info.service = results[0].service
+    //         info.role = results[0].type
+    //         info.CT = results[0].create_time
             
-            console.log('WELCOME TO YOUR PROFILE')
-        }
-    })        
+    //         console.log('WELCOME TO YOUR PROFILE')
+    //     }
+    // })        
+        
     }
 
 })

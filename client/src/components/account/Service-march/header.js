@@ -7,7 +7,7 @@ import { faBell } from '@fortawesome/free-solid-svg-icons'
 import Pmenu from "./profile-menu"
 import Show from "./show.js"
 import React, { useState } from "react";
-const Head = () => {
+const Head = ({userInfo}) => {
     const [divcontainer, setdivcontainer] = useState(false);
     const [divcontaineravatar, setdivcontaineravatar] = useState(false);
     return (
@@ -58,7 +58,7 @@ const Head = () => {
             }
 
             {
-                divcontaineravatar && (<div><Pmenu /></div>)
+                divcontaineravatar && (<div><Pmenu userInfo={userInfo} /></div>)
             }
         </header>
 

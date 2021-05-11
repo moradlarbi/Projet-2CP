@@ -34,6 +34,8 @@ application.use('/', authRouter)
 
 const app = express()
 router = express.Router()
+var router2 = express.Router()
+
 usersRoute =  (req, res) => {
     res.json({
         erreur: {
@@ -62,10 +64,21 @@ usersRoute =  (req, res) => {
     })
 }
 
+infoRoute = (req, res) => {
+    res.json({
+        infor: {
+            numDoss: 1
+        }
+    })
+}
 
 router.get("/", usersRoute)
-
 app.use("/users/", router)
+
+router2.get("/",infoRoute)
+app.use("/infor/",router2)
+
+
 
 
 app.listen(3001, function(){

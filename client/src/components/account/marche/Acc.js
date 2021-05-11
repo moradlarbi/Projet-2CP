@@ -6,11 +6,11 @@ import Header from "../Service-march/header.js"
 import moment from 'react-moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileDownload } from '@fortawesome/free-solid-svg-icons'
-const Acc = ({submitForm}) => {
+const Acc = (props) => {
     const { handleChange, handleSubmit, values, errors } = useForm(
-        submitForm,
-        validation,
+        validation
     );
+    var numDoss = props.match.params.id;
     var duree = 10;
     var date = new Date()
     var debutDate = date.getFullYear()+'-'
@@ -50,7 +50,7 @@ const Acc = ({submitForm}) => {
             <Header />
             <div className="form-container">
                 <h2>Remplissez ce formulaire </h2>
-                <h1>Dossier n°123: Service marche</h1>
+                <h1>Dossier n°{numDoss}: Service marche</h1>
                 <form onSubmit={handleSubmit} className="marche-form" noValidate>
                     <div className="cont date-debut-container">
                         <div className="content">
@@ -174,7 +174,7 @@ const Acc = ({submitForm}) => {
                         <button type="submit" className="btn-done" > Sauvegarder </button>
                     </div>
                     <div className="btn-send">
-                        <button type="submit" onClick={submitForm} className="btn-done" > Envoyer </button>
+                        <button type="submit" className="btn-done" > Envoyer </button>
                     </div>
                     <div className="btn-arreter">
                         <button type="" className="btn-" > Annuler </button>

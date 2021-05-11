@@ -1,13 +1,14 @@
 import './Style_sheet.css'
 import prfp from "../../../images/folder-images-main/imagefille.jpg"
-const Pmenu = () => {
+const Pmenu = ({userInfo}) => {
+
     return (
         <div className="profilemenu">
             <div className="profile">
                 <img src={prfp} className="avatar" />
                 <p className="userinfo">
-                    <h3> Khedir Meriem </h3>
-                    <h5> jm_khedir@esi.dz </h5>
+                    <h3> {userInfo.nom} </h3>
+                    <h5> {userInfo.email} </h5>
                 </p>
             </div>
             <nav className="links">
