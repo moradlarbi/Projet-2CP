@@ -14,10 +14,7 @@ import validation from './validation'
 import { faSignInAlt, faUser, faEnvelope, faLock, faUserTag, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 library.add(fab)
 const Card = ( {submitForm} ) => {
-    const { handleChange, handleSubmit, values } = useForm(
-        submitForm,
-        validation
-      );
+
       const [PassInputType, ToggleIcon] = usePassword();
       const history = useHistory();
         const viewProfile = function() {
@@ -25,6 +22,7 @@ const Card = ( {submitForm} ) => {
         };
     const [errors, setErrors] = useState({email: '', password: ''})
     const [err, setErr] = useState({email: '', password: ''})
+
     useEffect(() => {
         fetch("/users/").then( res => {
             if (res.ok) {
@@ -45,11 +43,16 @@ const Card = ( {submitForm} ) => {
         // })/*.then((respone) => {
         // console.log('infos envoyees')
         })
+
         setErrors({...errors, email: err.email, password: err.password})
+        console.log(err)
+        console.log(errors)
         submitForm()
-        
     }
-    
+    const { handleChange, handleSubmit, values } = useForm(
+        submitForm,
+        errors
+      );   
    
     
 
@@ -105,7 +108,7 @@ const Card = ( {submitForm} ) => {
                             
                             
                             <div className="btn-login" onClick={SubmitFunc}>
-                                <button type="submit" className="btn-sign" > Se connecter <FontAwesomeIcon icon={faSignInAlt} /> </button>
+                                <button type="submit" className="btn-sign" /* onClick={SubmitFunc}*/> Se connecter <FontAwesomeIcon icon={faSignInAlt} /> </button>
                             </div>
                         </form>
                     </div>

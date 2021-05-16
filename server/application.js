@@ -7,30 +7,36 @@ const { urlencoded } = require('express')
 
 const application = express()
 
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '123456789',
-    database: 'projet_bdd'
-})
+// const db = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '123456789',
+//     database: 'projet_bdd'
+// })
 
-db.connect((err) => {
-    if (err) {console.log(err.message)}
-    else {console.log("MYSQL connected...")}
-})
+// db.connect((err) => {
+//     if (err) {console.log(err.message)}
+//     else {console.log("MYSQL connected...")}
+// })
 
 application.use(cors())
 application.use(express.json())
 application.use(express.urlencoded({ extended: false}))
 
+///
 const all = require('./routes/users')
 const authRouter = all.router
 const errors = all.errors
 const signErrors = all.erreur
 const info = all.info
 
+const all2 = require('./routes/infoDoss')
+const authRouter2 = all2.router2
+const nmrDoss = all2.nmrDoss
+
 ///Define routes
 application.use('/', authRouter)
+application.use('/', authRouter2)
 
 const app = express()
 router = express.Router()
@@ -67,7 +73,9 @@ usersRoute =  (req, res) => {
 infoRoute = (req, res) => {
     res.json({
         infor: {
-            numDoss: 1
+            numDoss: nmrDoss.numero,
+            budgetDoss: [12, 15, 16],
+            comptableDoss: [14, 15, 17]
         }
     })
 }

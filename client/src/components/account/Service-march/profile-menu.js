@@ -1,7 +1,15 @@
 import './Style_sheet.css'
 import prfp from "../../../images/folder-images-main/imagefille.jpg"
+import { useHistory } from 'react-router';
 const Pmenu = ({userInfo}) => {
 
+    let user = JSON.parse(localStorage.getItem("userInfo"));
+    const history = useHistory();
+    function logout() {
+        localStorage.clear();
+        history.push('/login')
+    }
+    console.log(userInfo)
     return (
         <div className="profilemenu">
             <div className="profile">
@@ -39,7 +47,7 @@ const Pmenu = ({userInfo}) => {
                 </ul>
                 <ul className="navelement">
                     <li>
-                        <a href="#" className="deconnecter">Déconnecter </a>
+                        <a href="#" className="deconnecter" onClick={logout}>Déconnecter </a>
                     </li>
                 </ul>
             </nav>
