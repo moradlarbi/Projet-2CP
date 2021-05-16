@@ -1,16 +1,14 @@
 import './Style_sheet.css'
-import Not from "./notification.js"
+import Not from "./Notification.js"
 const Show = ({ traiter, cloturé, fileinfo }) => {
 
     return (
-        <div className="notification-list">
-            <div class="section">
-                <a href="" class="profContsec" >
-                    <div className="profConttxt">
-                        <Not traiter={traiter} cloturé={cloturé} fileinfo={fileinfo} />
-                    </div>
-                </a>
+        <div className="notification-container">
+            <div className="notification-list">
+                <Not numDoss={1}/>
+                <Not numDoss={1}/>
             </div>
+            
         </div>
     );
 

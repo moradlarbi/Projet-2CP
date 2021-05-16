@@ -6,35 +6,32 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell, faEject, faSortUp } from '@fortawesome/free-solid-svg-icons'
 import Pmenu from "./profile-menu"
 import Show from "./show.js"
+import Notification from "./Notification.js"
+
 import React, { useState, useEffect } from "react";
 import { useRef } from 'react'
-let useClickOutside = (handler1) => {
-    let menuref = useRef();
-    useEffect(() => {
-        let handler = (event) => {
-            if (!menuref.current.contains(event.target)) {
-                handler1();
-            }
-        };
-        document.addEventListener("mousedown", handler);
-        return () => {
-            document.removeEventListener("mousedown", handler);
-        }
-    });
-    return menuref;
-}
+// let useClickOutside = (handler1) => {
+//     let menuref = useRef();
+//     useEffect(() => {
+//         let handler = (event) => {
+//             if (!menuref.current.contains(event.target)) {
+//                 handler1();
+//             }
+//         };
+//         document.addEventListener("mousedown", handler);
+//         return () => {
+//             document.removeEventListener("mousedown", handler);
+//         }
+//     });
+//     return menuref;
+// }
 const Head = ({ userInfo, serviceinfo }) => {
-    const [divcontainer, setdivcontainer] = useState(false);
-    const [divcontaineravatar, setdivcontaineravatar] = useState(false);
+    const [menu, setMenu] = useState(false)
+    const [notMenu, setNotMenu] = useState(false)
     const fileinfo = {
         num: '13',
         date: '13-5'
     };
-    let menuref = useClickOutside(() => {
-        setdivcontainer(false);
-        setdivcontaineravatar(false);
-    }
-    )
     return (
         <header className="head-mon-serv">
 
@@ -62,40 +59,23 @@ const Head = ({ userInfo, serviceinfo }) => {
                 <ul className="navbar2 navbar">
 
                     <li className="nav-el2 nav-el" >
-                        <a className="element" onClick={() => setdivcontainer(curentdivcontainer => !curentdivcontainer)}>
+                        <a className="element" onClick={() => setNotMenu(!notMenu)}>
                             <span className="bell" > <FontAwesomeIcon icon={faBell} className="icon" /></span>
                             <span className="number"><Notif /></span>
                         </a>
 
                     </li>
                     <li className="nav-el3 nav-el" >
-                        <a className="elementP" onClick={() => setdivcontaineravatar(avatar => !avatar)}>
+                        <a className="elementP" onClick={() => setMenu(!menu)}>
                             <img src={prfp} className="avatar" />
                         </a>
                     </li>
                 </ul>
 
             </nav>
-            <div ref={menuref}>
-                {
-                    divcontainer && (
-                        <div className="not-tab">
-                            <div className="tete" >
-                                <a href=" " className="notification">Notification</a>
-                                <div className="fermer" onClick={() => setdivcontainer(curentdivcontainer => !curentdivcontainer)}>
-                                    <FontAwesomeIcon icon={faEject} className="icon" />
-                                </div>
-                            </div>
-                            <div>
-                                <Show traiter="true" cloturé="false" fileinfo={fileinfo} />
-                                <Show traiter="false" cloturé="true" fileinfo={fileinfo} />
-                                <Show traiter="false" cloturé="false" fileinfo={fileinfo} />
-                            </div>
-                        </div>)
-                }
-                {
-                    divcontaineravatar && (<div><Pmenu userInfo={userInfo} /></div>)
-                }
+            <div>
+                { notMenu && <Show /> }
+                {menu && <Pmenu userInfo={userInfo} />}
             </div>
         </header >
 

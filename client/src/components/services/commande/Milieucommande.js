@@ -21,6 +21,7 @@ const Milieub = ({ userInfo }) => {
         }).then(jsonRes => {
             if (jsonRes !== undefined) {
                 setNumDoss(jsonRes.infor.numDoss)
+                setNum(jsonRes.infor.commandeDoss)
             }
         })
 

@@ -74,8 +74,10 @@ infoRoute = (req, res) => {
     res.json({
         infor: {
             numDoss: nmrDoss.numero,
+            marcheDoss: [1, 2, 3],
+            commandeDoss: [4, 5, 9],
             budgetDoss: [12, 15, 16],
-            comptableDoss: [14, 15, 17]
+            comptableDoss: [14, 15, 14]
         }
     })
 }

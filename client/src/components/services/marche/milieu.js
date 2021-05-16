@@ -17,7 +17,7 @@ const Milieu = ({userInfo}) => {
         }).then(jsonRes => {
             if (jsonRes !== undefined){
                 setNumDoss(jsonRes.infor.numDoss)
-                setNum([...Num,numDoss])
+                setNum(jsonRes.infor.marcheDoss)
                 
             }  
         }) 

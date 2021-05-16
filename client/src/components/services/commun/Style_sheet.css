@@ -149,18 +149,26 @@ body .head-mon-serv .nav-container-mon-serv .navbar2 .nav-el2 .element .number:e
 
 
 /* Menu notification*/
-
-.notification-list {
+.notification-container {
     width: 100%;
+    height: 100%;
+}
+.notification-list {
+    width: 200px;
     padding-top: 15px;
     background-color: white;
+    position: absolute;
+    top: 70px;
+    left: 1120px;
+    border: 1px solid black;
 }
 
-.not-tab {
+/* .not-tab {
     position: absolute;
     right: 10%;
     top: 8%;
     padding: 10px;
+    width: 100%;
 }
 
 .not-tab .fermer {
@@ -250,7 +258,7 @@ body .head-mon-serv .nav-container-mon-serv .navbar2 .nav-el2 .element .number:e
 .notification-container .row .notif-info .sub-txt {
     padding-left: 30px;
     font-size: 13px;
-}
+} */
 
 
 /* footer*/
